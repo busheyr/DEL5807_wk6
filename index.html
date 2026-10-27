@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DEL5807 — Week 6: Authentic Leadership &amp; Identity</title><style>
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 62.5%; height:100%; max-width:100vw; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { margin:0; height:100%; background:#ffffff; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size:1.8rem; line-height:1.8; color:#111; overflow:hidden; position:relative; }
+.background-dots { position:fixed; top:0; right:0; width:60%; opacity:0.15; pointer-events:none; z-index:0; }
+.lesson-shell { height:100%; display:flex; flex-direction:column; position:relative; z-index:1; }
+.lesson-shell__header { padding:1.8rem 3rem; background:#fff; border-bottom:1px solid #ececec; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+.lesson-shell__title { font-size:2.2rem; font-weight:700; line-height:1.2; }
+.lesson-shell__meta { font-size:1.5rem; color:#555; white-space:nowrap; }
+.lesson-shell__body { flex:1; overflow-y:auto; padding:5rem 0; }
+.lesson-page { width:100%; max-width:104rem; margin:0 auto; padding:0 3.2rem; }
+:root { --space-xs:1.4rem; --space-sm:2.2rem; --space-md:3.4rem; --space-lg:5rem; --space-xl:7rem; --blue:#007CFF; --green:#0b6b3a; --ink:#111; --muted:#60656f; --soft:#f5f8fb; --line:#dde4ee; }
+.lesson-block { margin-block:var(--space-xl); padding:var(--space-lg); background:#fff; border-radius:.8rem; }
+.lesson-block.alt { background:#f7f9fb; box-shadow:0 .4rem 1.6rem rgba(0,0,0,.04); }
+.lesson-block.tint { background:#f4f9ff; box-shadow:0 .4rem 1.6rem rgba(0,0,0,.04); }
+.lesson-block h1 { font-size:4rem; line-height:1.12; margin:0 0 var(--space-sm); }
+.lesson-block h2 { font-size:2.8rem; margin:0 0 var(--space-sm); line-height:1.25; }
+.lesson-block h3 { font-size:2rem; margin:0 0 1rem; line-height:1.35; }
+.lesson-block h4 { font-size:1.8rem; margin:0 0 .6rem; line-height:1.35; }
+.lesson-block p { margin:0 0 var(--space-sm); }
+.lesson-block ul { margin:0 0 var(--space-sm); padding-left:2.4rem; }
+.lesson-block li { margin:.6rem 0; }
+.cover-screen { position:fixed; inset:0; background:#fff; z-index:5000; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:2rem; transition:opacity .35s ease, visibility .35s ease; }
+.cover-screen.hidden { opacity:0; visibility:hidden; }
+.cover-title { font-size:3.6rem; line-height:1.15; font-weight:750; margin-bottom:3rem; max-width:78rem; }
+.cover-btn { padding:1.2rem 2.4rem; font-size:1.8rem; border-radius:.6rem; border:0; background:var(--blue); color:#fff; cursor:pointer; font-weight:700; transition:background .2s ease; }
+.cover-btn:hover { background:#0066d1; }
+.hero { border-top:.8rem solid var(--blue); background:linear-gradient(180deg,#fff,#f7fbff); }
+.callout { border-left:.6rem solid var(--blue); padding:1.8rem 2.2rem; background:#f4f9ff; border-radius:.4rem; margin:var(--space-sm) 0; font-weight:650; }
+.callout2 { text-align:center; font-size:2.3rem; line-height:1.6; color:#1a1a1a; max-width:76rem; margin:3.6rem auto; padding:2rem 1rem; position:relative; }
+.callout2::before { content:""; width:6rem; height:.3rem; background:var(--green); border-radius:1rem; display:block; margin:0 auto 2rem; }
+.circle-list { padding-left:0 !important; list-style:none; margin-top:2rem; display:grid; gap:1.2rem; }
+.circle-list li { display:flex; align-items:center; margin:0; }
+.circle-num { width:3.2rem; height:3.2rem; border-radius:50%; background:var(--blue); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; margin-right:1rem; flex:0 0 auto; }
+.split { display:grid; grid-template-columns:minmax(0,1fr) minmax(28rem,.8fr); gap:3rem; align-items:start; }
+.panel { border:1px solid var(--line); border-radius:.8rem; padding:2.2rem; background:#fff; }
+.panel.green { border-left:.5rem solid var(--green); }
+.grid-3, .grid-4, .grid-2 { display:grid; gap:1.8rem; margin-top:2rem; }
+.grid-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.grid-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.grid-4 { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.mini-card { border:1px solid var(--line); border-radius:.8rem; padding:2rem; background:#fff; min-height:100%; }
+.mini-card h3, .mini-card h4 { color:#0d3155; }
+.reveal-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(23rem,1fr)); gap:1.6rem; margin-top:2rem; }
+.reveal-card { border:1px solid var(--line); border-radius:.8rem; background:#fff; overflow:hidden; }
+.reveal-btn { width:100%; border:0; background:#eef6ff; color:#10243a; padding:1.6rem; font-size:1.8rem; font-weight:700; text-align:left; cursor:pointer; }
+.reveal-content { display:none; padding:1.8rem; }
+.reveal-card.open .reveal-content { display:block; }
+.accordion { border:1px solid #d9e1ea; border-radius:.8rem; overflow:hidden; background:#fff; }
+.accordion-item + .accordion-item { border-top:1px solid #d9e1ea; }
+.accordion-header { background:#f7f9fb; padding:1.6rem 1.8rem; cursor:pointer; font-size:1.8rem; font-weight:700; }
+.accordion-content { display:none; padding:1.8rem; background:#fff; }
+.accordion-item.open .accordion-content { display:block; }
+.lesson-tabs { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1.6rem; }
+.tab-btn { padding:.9rem 1.5rem; border-radius:.7rem; border:1px solid #cbd7e5; background:#fff; cursor:pointer; font-size:1.6rem; font-weight:650; }
+.tab-btn.active { background:#eaf4ff; border-color:#7dbaff; color:#07315b; }
+.tab-content { display:none; margin-top:1.8rem; }
+.tab-content.active { display:block; }
+.card-sequence { position:relative; margin:3rem auto; width:100%; max-width:82rem; }
+.card-sequence::before { content:""; position:absolute; left:2rem; top:0; width:2px; height:100%; background:#d9e1ea; z-index:0; }
+.sequence-card { position:relative; background:#fff; border-radius:.8rem; padding:2.2rem 2.6rem; margin:2.4rem 0 2.4rem 4rem; box-shadow:0 4px 18px rgba(0,0,0,.07); border-left:.4rem solid var(--green); z-index:2; }
+.sequence-date { color:var(--green); font-weight:800; font-size:1.6rem; margin-bottom:.6rem; }
+.choice-block { display:grid; grid-template-columns:28rem 1fr; gap:2rem; align-items:start; }
+.choice-menu { display:grid; gap:1rem; }
+.choice-btn { border:1px solid #cbd7e5; background:#fff; text-align:left; padding:1.4rem 1.6rem; border-radius:.7rem; font-size:1.65rem; font-weight:700; cursor:pointer; }
+.choice-btn.active { border-color:var(--blue); background:#eaf4ff; }
+.choice-panel { display:none; }
+.choice-panel.active { display:block; }
+.comparison { display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; margin-top:2rem; }
+.comparison .panel:first-child { border-top:.5rem solid #7a8a9a; }
+.comparison .panel:last-child { border-top:.5rem solid var(--green); }
+.quote-line { border-block:1px solid var(--line); padding:2.4rem 0; font-weight:700; color:#1b2d40; }
+.section-divider { text-align:center; background:#fff; border-top:.6rem solid var(--green); box-shadow:0 .4rem 1.6rem rgba(0,0,0,.04); }
+.section-divider h2 { margin-bottom:0; }
+.continue-wrap { width:100%; margin:3rem 0; }
+.continue-btn { width:100%; border:0; border-radius:.8rem; background:#006649; color:#fff; min-height:6.4rem; font-size:1.9rem; font-weight:800; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 .4rem 1.6rem rgba(0,102,73,.18); transition:background .2s ease, transform .2s ease; }
+.continue-btn:hover { background:#00563e; transform:translateY(-1px); }
+.continue-btn:focus-visible { outline:.3rem solid #7dbaff; outline-offset:.3rem; }
+.template-note { color:var(--muted); font-size:1.6rem; }
+.code-note { display:block; margin-top:1rem; padding:1.4rem 1.6rem; border:1px dashed #cbd7e5; border-radius:.8rem; background:#fbfdff; color:#425466; font-size:1.55rem; }
+@media (max-width:850px) {
+  .lesson-shell__header { align-items:flex-start; flex-direction:column; }
+  .split, .grid-2, .grid-3, .grid-4, .choice-block, .comparison { grid-template-columns:1fr; }
+  .lesson-block { padding:3rem 2rem; margin-block:4rem; }
+  .lesson-page { padding:0 1.8rem; }
+}
+.primary,.cover-btn{padding:1.15rem 2rem;border:0;border-radius:.6rem;background:var(--blue);color:#fff;cursor:pointer;font-size:1.7rem;font-weight:700}.primary:hover,.cover-btn:hover{background:#0066d1}.secondary{padding:1rem 1.5rem;border:1px solid #aebdcd;border-radius:.6rem;background:#fff;cursor:pointer;font-size:1.6rem;font-weight:650}.options{display:grid;gap:1rem;margin:2rem 0}.option{display:flex;gap:1rem;align-items:flex-start;border:1px solid var(--line);border-radius:.7rem;background:#fff;padding:1.3rem 1.5rem;cursor:pointer}.option:hover{border-color:#7dbaff}.option input{margin-top:.55rem;accent-color:var(--blue)}.feedback{display:none;margin-top:1.6rem;padding:1.4rem 1.6rem;border-radius:.6rem;font-weight:650}.feedback.show{display:block}.feedback.correct{background:#e7f6ed;color:#07562d;border-left:.5rem solid var(--green)}.feedback.incorrect{background:#fff0f0;color:#7c1e1e;border-left:.5rem solid var(--red)}.assessment-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem}
+:root{--blue:#006bdb;--red:#a32626}body{height:auto;overflow:auto}.lesson-shell{height:auto;min-height:100vh}.lesson-shell__body{overflow:visible;padding:2rem 0}.lesson-block{margin-block:4rem}button,textarea{font:inherit}:focus-visible{outline:3px solid #006bdb;outline-offset:4px}.lesson-nav{display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-top:2rem}.lesson-nav a{color:#075594;font-size:1.6rem}.eyebrow{font-size:1.5rem;color:#536477;font-weight:700}.circle-list li{align-items:flex-start}.circle-num{margin-top:.4rem}.dimension{margin:2rem 0}.dimension summary{padding:1.4rem 1.8rem;background:#eef6ff;font-weight:650;cursor:pointer}.dimension details p{padding:1.8rem;margin:0}.dimension h3{color:#0d3155}.reflection{margin:2.5rem 0}.reflection label{display:block;margin-bottom:1rem}.reflection textarea{width:100%;min-height:15rem;resize:vertical;padding:1.5rem;border:1px solid #aebdcd;border-radius:.6rem;background:white;color:#111}.assessment+.assessment{border-top:1px solid var(--line);padding-top:3rem;margin-top:3rem}fieldset{border:0;padding:0;margin:0;min-width:0}legend{font-weight:650;padding:0}.skip-link{position:absolute;top:-10rem;left:1rem;background:white;padding:1rem;z-index:10}.skip-link:focus{top:1rem}.mini-card h3{font-size:1.9rem}.notes-status{min-height:2rem;font-size:1.6rem;color:#07562d}@media(max-width:850px){.lesson-block h1{font-size:3.2rem}.lesson-shell__meta{white-space:normal}}@media print{body{font-size:12pt}.lesson-block{padding:1rem;margin:2rem 0;break-inside:avoid}.lesson-nav,.assessment-actions,.check,.skip-link{display:none}details::details-content{display:block}.reflection textarea{min-height:12rem}}
+
+.match-card{margin:2rem 0;padding:2.2rem;border:1px solid var(--line);border-radius:.8rem;background:white}.match-card label{display:block;font-weight:650;margin-bottom:1rem}.match-card select{width:100%;font:inherit;padding:1rem;border:1px solid #aebdcd;border-radius:.5rem;background:white}.match-card .feedback{font-size:1.65rem}.framework-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8rem}.framework-grid .mini-card{border-top:4px solid var(--blue)}.framework-grid .mini-card:nth-child(2){border-color:#0b6b3a}.framework-grid .mini-card:nth-child(3){border-color:#84521d}.framework-grid .mini-card:nth-child(4){border-color:#7758a0}.comparison ul{margin-bottom:0}.comparison h3{margin-bottom:2rem}.skill-section{margin:2.2rem 0}.skill-section h3{color:#0d3155}@media(max-width:850px){.framework-grid{grid-template-columns:1fr}}
+
+.framework{margin:2rem 0}.framework h3{color:#0d3155}.risk{margin:2rem 0;padding:2.4rem;background:white;border:1px solid var(--line);border-radius:.8rem}.risk legend{font-weight:700;color:#0d3155;font-size:2rem}.risk fieldset{margin-top:2rem}.risk .option{font-size:1.65rem}.risk .feedback{font-size:1.65rem}.governance details{border:1px solid var(--line);border-radius:.8rem;background:white;margin:1.6rem 0}.governance summary{padding:1.8rem;cursor:pointer;font-weight:700}.governance details p{padding:0 1.8rem 1.8rem;margin:0}.match-summary{font-weight:650;color:#07562d}.reference-heading{font-size:1.5rem;color:#536477;margin-bottom:1rem}.primary:disabled{opacity:.6;cursor:default}@media print{.risk{break-inside:avoid}.governance details::details-content{display:block}}
+
+.blindspot{background:white;border:1px solid var(--line);border-radius:.8rem;padding:2.4rem;margin:2rem 0}.blindspot label{display:block;font-weight:650;margin-bottom:1rem}.blindspot select{font:inherit;width:100%;padding:1rem;border:1px solid #aebdcd;border-radius:.5rem;background:white}.intervention{margin-top:1.5rem;border-left:4px solid var(--green);background:#e7f6ed;padding:1.6rem}.intervention[hidden]{display:none}.audit-note{margin:2rem 0}.audit-note label{display:block;font-weight:650;margin-bottom:1rem}.audit-note textarea{font:inherit;width:100%;min-height:15rem;padding:1.4rem;border:1px solid #aebdcd;border-radius:.6rem}.reference-heading{font-size:1.5rem;color:#536477}.comparison h3{color:#0d3155}@media print{.intervention[hidden]{display:block}.blindspot select,.blindspot button{display:none}}
+
+.component-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem}.component-grid article{border-top:4px solid var(--blue)}.crucible{margin:2rem 0;background:white;border:1px solid var(--line);border-radius:.8rem;padding:2.4rem}.crucible h3{color:#0d3155}.crucible details{margin-top:1.5rem;background:#eef6ff;border-radius:.5rem}.crucible summary{padding:1.5rem;cursor:pointer;font-weight:650}.crucible details p{padding:0 1.5rem 1.5rem}.stance{border:1px solid var(--line);border-radius:.8rem;background:white;padding:2.4rem;margin:2rem 0}.stance label{display:block;margin-bottom:1rem}.stance select{font:inherit;width:100%;background:white;padding:1rem;border:1px solid #aebdcd;border-radius:.5rem}.stance .answer-name{font-weight:700;color:#07562d}.stance [hidden]{display:none}@media(max-width:850px){.component-grid{grid-template-columns:1fr}}@media print{.crucible details::details-content{display:block}.stance select,.stance button{display:none}.stance [hidden]{display:block}}
+</style></head><body><a class="skip-link" href="#intro">Skip to content</a><div class="lesson-shell"><header class="lesson-shell__header"><div class="lesson-shell__title">DEL 5807: Leadership Foundations</div><div class="lesson-shell__meta">Week 6</div></header><main class="lesson-shell__body"><div class="lesson-page"><section class="lesson-block hero" id="intro"><p class="eyebrow">DEL 5807: Leadership Foundations · Week 6</p><h1>Week 6 Executive Lecture: Authentic Leadership &amp; Identity – Navigating Crucible Moments, Relational Transparency, and Executive Alignment</h1><h2>Executive Summary &amp; Lecture Purpose</h2><p>Following our systemic evaluation of enterprise governance in Week 5, Week 6 shifts focus inward to examine executive authenticity and identity. In executive practice, authenticity is not mere self-expression or unedited honesty; it is an intentional discipline that bridges personal moral grounding with enterprise governance.</p><p>Anchor Reading: George, B., Sims, P., McLean, A. N., &amp; Mayer, D. (2007). Discovering your authentic leadership. Harvard Business Review, 85(2), 129–138.</p><p>This lecture provides the complete theoretical bridging needed for Week 6: synthesizing the 4-Component Model of Authentic Leadership (Walumbwa et al., 2008) with George et al.’s (2007) executive framework on life stories, crucible moments, support systems, and internal moral anchors. This prepares candidates directly for writing their Draft Executive Leadership Philosophy in Week 7.</p><nav class="lesson-nav" aria-label="Sections"><a href="#section-1">Four Components</a><a href="#section-2">Crucible Moments</a><a href="#section-3">Internal Anchors</a><a href="#section-4">Authentic & Performative Authority</a><a href="#reflection">Philosophy Notes</a></nav></section>
+<section class="lesson-block " id="section-1"><h2>1. The Architecture of Authentic Leadership: The 4-Component Model</h2>
+<p>While Week 2 introduced personal identity, Week 6 evaluates how authentic leadership functions as a rigorous, theoretical construct in executive practice. As established by Walumbwa et al. (2008), authentic leadership comprises four non-negotiable operational dimensions:</p><div class="component-grid">
+<article class="panel"><h3>Self-Awareness:</h3><p>Continually examining one’s values, cognitive biases, motives, and impact on followers. Self-aware executives understand how their personal history shapes their decision-making defaults under stress.</p></article>
+<article class="panel"><h3>Internalized Moral Perspective:</h3><p>A self-regulatory mechanism driven by internal moral standards and core values rather than external peer pressure, political expediency, or quarterly performance demands.</p></article>
+<article class="panel"><h3>Balanced Processing:</h3><p>Objectively analyzing relevant data, opposing viewpoints, and disconfirming evidence before arriving at strategic conclusions. Balanced executives resist confirmation bias and foster psychological safety in board and C-suite discussions.</p></article>
+<article class="panel"><h3>Relational Transparency:</h3><p>Presenting one’s genuine self to stakeholders through open, honest communication. It involves appropriate vulnerability while maintaining executive presence, composure, and institutional trust.</p></article>
+</div>
+</section>
+<section class="lesson-block tint" id="section-2"><h2>2. Executive Crucible Moments &amp; Identity Formation (George et al., 2007)</h2>
+<p>Bill George and colleagues (2007) demonstrate that authentic leaders do not simply appear; they are forged through transformative life and career experiences known as &quot;crucible moments.&quot; A crucible is a supreme test or trial that forces a leader to re-examine their identity, question their assumptions, and refine their purpose.</p>
+<article class="crucible"><p class="reference-heading">Crucible Type (George et al., 2007)</p><h3>Professional Setback / Failure</h3><p class="reference-heading">Executive Challenge &amp; Organizational Risk</p><p>Navigating business collapse, public criticism, or career termination without collapsing into defensiveness.</p><details><summary>Authentic Leadership Integration</summary><p>Extracting critical self-knowledge, reforming strategic assumptions, and grounding identity in resilience rather than external status.</p></details></article>
+<article class="crucible"><p class="reference-heading">Crucible Type (George et al., 2007)</p><h3>Ethical Trial / Pressure Test</h3><p class="reference-heading">Executive Challenge &amp; Organizational Risk</p><p>Facing extreme institutional pressure to compromise personal or legal ethics for financial gain.</p><details><summary>Authentic Leadership Integration</summary><p>Solidifying an internalized moral perspective and establishing non-negotiable personal governance boundaries.</p></details></article>
+<article class="crucible"><p class="reference-heading">Crucible Type (George et al., 2007)</p><h3>Personal Loss or Crisis</h3><p class="reference-heading">Executive Challenge &amp; Organizational Risk</p><p>Managing severe illness, personal grief, or adversity while maintaining professional responsibilities.</p><details><summary>Authentic Leadership Integration</summary><p>Developing genuine empathy, humility, and relatable vulnerability that enhances relational transparency with followers.</p></details></article>
+</section>
+<section class="lesson-block " id="section-3"><h2>3. Internal Anchors vs. External Motivators</h2>
+<p>A central contribution of George et al. (2007) is the distinction between extrinsic motivators and intrinsic purpose. Senior executives operate in high-pressure environments dominated by external metrics—stock price, compensation, power, and prestige. Without a strong internal anchor, leaders risk succumbing to performative or pseudo-transformational behavior.</p><div class="comparison">
+<article class="panel"><h3>Extrinsic Motivators:</h3><p>Quarterly financial targets, public recognition, title, and authority. While necessary for operational success, when extrinsic motivators become the primary driver, executives become vulnerable to ethical drift and motivated blindness.</p></article>
+<article class="panel"><h3>Intrinsic Purpose (Internal Anchors):</h3><p>Personal growth, helping others develop, driving institutional innovation, and societal impact. Authentic leaders align extrinsic rewards with intrinsic purpose, ensuring that institutional goals serve a higher organizational mission.</p></article>
+</div>
+<article class="panel green framework"><h3>Building Executive Support Systems:</h3><p>George et al. emphasize that authentic leaders do not succeed alone. They build confidential support teams—mentors, peer circles, and trusted advisors—who provide unvarnished truth, hold them accountable to their core values, and prevent executive isolation.</p></article>
+</section>
+<section class="lesson-block alt" id="section-4"><h2>4. Authentic Leadership vs. Performative &amp; Pseudo-Transformational Authority</h2>
+<p>Executive candidates must critically distinguish between true authentic leadership and counterfeit forms of authority:</p><p class="template-note">Identify the executive stance described in each entry. Check your choices to distinguish authentic practice from image management and manipulative authority.</p>
+<article class="stance" data-answer="1"><label for="stance-1">Curated vulnerability used strategically for public relations or image management without taking the personal or governance risks required by an internalized moral compass.</label><select id="stance-1"><option value="">Choose an executive stance…</option><option value="0">Authentic Executive Stance</option><option value="1">Performative Authenticity</option><option value="2">Pseudo-Transformational Leadership</option></select><div class="assessment-actions"><button class="primary check" type="button">Check stance</button></div><div class="feedback" role="status"></div></article>
+<article class="stance" data-answer="2"><label for="stance-2">Self-serving leadership wrapped in moralizing rhetoric. Pseudo-transformational leaders demand uncritical loyalty, manipulate follower emotions, and punish internal dissent.</label><select id="stance-2"><option value="">Choose an executive stance…</option><option value="0">Authentic Executive Stance</option><option value="1">Performative Authenticity</option><option value="2">Pseudo-Transformational Leadership</option></select><div class="assessment-actions"><button class="primary check" type="button">Check stance</button></div><div class="feedback" role="status"></div></article>
+<article class="stance" data-answer="0"><label for="stance-0">Grounded in genuine self-awareness, willingness to admit mistakes (balanced processing), and aligning enterprise strategy with core institutional ethics.</label><select id="stance-0"><option value="">Choose an executive stance…</option><option value="0">Authentic Executive Stance</option><option value="1">Performative Authenticity</option><option value="2">Pseudo-Transformational Leadership</option></select><div class="assessment-actions"><button class="primary check" type="button">Check stance</button></div><div class="feedback" role="status"></div></article>
+<div class="callout">Capstone Scaffolding Connection: The crucible reflections, internal values, and authentic leadership constructs evaluated this week serve as the primary foundational material for Section I (Core Executive Stance) and Section II (Crucible Analysis) of your Week 7 Draft Executive Leadership Philosophy paper.</div>
+</section>
+<section class="lesson-block tint" id="reflection"><h2>Executive Leadership Philosophy Notes</h2><p class="template-note">Use the concepts above to prepare your Week 7 philosophy. Notes remain on this page until it is closed or reloaded; download a copy to keep your draft.</p>
+<div class="audit-note"><label for="note-0">Crucible analysis: What experience challenged your assumptions, and how did it change your executive identity?</label><textarea id="note-0" spellcheck="true"></textarea></div>
+<div class="audit-note"><label for="note-1">Internal anchors: Which values guide your decisions when external rewards or institutional pressures conflict with them?</label><textarea id="note-1" spellcheck="true"></textarea></div>
+<div class="audit-note"><label for="note-2">Authentic practice: How will you demonstrate the four components and use trusted advisors to hold yourself accountable?</label><textarea id="note-2" spellcheck="true"></textarea></div>
+<button type="button" class="primary" id="downloadNotes">Download philosophy notes</button><p class="notes-status" id="notesStatus" role="status"></p>
+</section></div></main></div><script>
+const names=["Authentic Executive Stance", "Performative Authenticity", "Pseudo-Transformational Leadership"];
+const hints=[
+ 'Look for self-awareness, acknowledgment of mistakes, and consistency between strategy and ethics.',
+ 'Focus on vulnerability presented for image management without corresponding governance risk or accountability.',
+ 'Focus on self-serving moral rhetoric, demands for loyalty, and punishment of dissent.'
+];
+document.querySelectorAll('.stance').forEach(block=>{
+ const select=block.querySelector('select'),feedback=block.querySelector('.feedback');
+ block.querySelector('.check').addEventListener('click',()=>{const good=select.value===block.dataset.answer;feedback.className='feedback show '+(good?'correct':'incorrect');feedback.textContent=!select.value?'Choose an executive stance before checking.':good?'Correct: '+names[Number(block.dataset.answer)]+'. '+hints[Number(block.dataset.answer)]:'Not quite. '+hints[Number(block.dataset.answer)]+' Try again.';});
+ select.addEventListener('change',()=>{feedback.className='feedback';feedback.textContent='';});
+});
+document.getElementById('downloadNotes').addEventListener('click',()=>{
+ const fields=[...document.querySelectorAll('textarea')],status=document.getElementById('notesStatus');
+ if(!fields.some(field=>field.value.trim())){status.textContent='Write a response before downloading your notes.';fields[0].focus();return;}
+ const text='DEL 5807 — Week 6 Executive Leadership Philosophy Notes\n\n'+fields.map(field=>document.querySelector('label[for="'+field.id+'"]').textContent+'\n'+field.value.trim()).join('\n\n');
+ const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download='DEL5807-week-6-philosophy-notes.txt';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='Notes downloaded.';
+});
+</script></body></html>
